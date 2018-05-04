@@ -6,8 +6,10 @@
   // Provides a service to open a code example in codepen.
   function Codepen($demoAngularScripts, $document, codepenDataAdapter) {
 
-    // The following URL must be HTTP and not HTTPS to allow us to do localhost testing
-    var CODEPEN_API = 'http://codepen.io/pen/define/';
+    // The following URL used to be HTTP and not HTTPS to allow us to do localhost testing
+    // It's no longer working, for more info:
+    // https://blog.codepen.io/2017/03/31/codepen-going-https/
+    var CODEPEN_API = 'https://codepen.io/pen/define/';
 
     return {
       editOnCodepen: editOnCodepen
@@ -204,7 +206,7 @@
 
       // See scripts.js for list of external AngularJS libraries used for the demos
 
-      return file.replace(matchAngularModule, ".module('MyApp',"+ modules + ")");
+      return file.replace(matchAngularModule, ".module('MyApp', "+ modules + ")");
     }
   }
 })();
